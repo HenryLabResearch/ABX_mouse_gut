@@ -10,7 +10,7 @@ Experimental metabolomics and abundance data was processed that fed modeling in 
 
 ## processing_CSVs.ipynb
 
-The SMIPPs, MMIPPs, and community fluxes were processed into the t-SNE plots and Clustered Heatmaps of the Supplemental.
+The SMIPPs, MMIPPs, and community fluxes were processed into the t-SNE plots and Clustered Heatmaps of the Supplemental.  The MMIPPs were then correlated with the metabolomics data to determine which compounds best explain community structure and metabolic behavior.
 
 ## escher_API_mapping.ipynb
 
