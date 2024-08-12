@@ -1,8 +1,10 @@
 # Code overview
 
+These Notebooks were executed in our Server environment and relied heavily on the `agoracommutil.py` util file, which implicity imports a [utility package](https://github.com/cshenry/chenry_utility_module/tree/master/lib/chenry_utility_module).   The installed packages of our Python kernel (not all necessarily being in these Notebooks) is presented in the `installed_packaged.txt` file.
+
 ## ASVCommunityModeling.ipynb
 
-The code in this Notebook acquired the genome-scale models from KBase and computed the SMIPPs, MMIPPs, and community fluxes that are the core of the modeling results.   This Notebook uses the `agoracommutil.py` file, which implicity imports a [utility package](https://github.com/cshenry/chenry_utility_module/tree/master/lib/chenry_utility_module) that must be installed to run this Notebook.
+The code in this Notebook acquired the genome-scale models from KBase and computed the SMIPPs, MMIPPs, and community fluxes that are the core of the modeling results.   
 
 ## degenerate_models_statistics.ipynb
 
