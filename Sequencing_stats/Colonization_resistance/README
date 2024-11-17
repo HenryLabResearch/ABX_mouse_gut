@@ -1,0 +1,24 @@
+README
+ 
+01.St_CFUs.pzfx
+- calculates, performs statistics on, and plots Salmonella load in Colonization Resistance experiments
+- generates Figure 5B, Figure S8C, Table S10A, Table S10D
+
+02.CFU_tissues_AUC.R
+- calculates, performs statistics on, and plots AUC for Salmonella load in Colonization resistance experiments
+- generates Figure S8E, calculates CFU AUC for analysis in prism
+
+03.inf_bw.pzfx
+- calculates, performs statistics on, and plots body weight data throughout colonization resistance experiments
+- generates Figure S8D, Table S10C
+
+04.histo_scores.prism
+- plots and performs statistics on cecal histopathology scores for colonization resistance experiments
+- generates Figure 5D, Figure S8F, Table S10E
+
+05.qPCR
+- plots and performs statistics on mucosal inflammatory gene expression as determined by qPCR using the delta-delta Ct method (normalized to b-actin and the RC-PBS-PBS control group)
+- generates Figure 5E-G, Figure S8G-O, Table S10F
+
+data/
+- directory that contains raw infection CFU data

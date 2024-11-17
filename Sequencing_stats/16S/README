@@ -1,0 +1,103 @@
+README
+
+CONTENTS:
+01.qiime2
+- Analysis pipeline from raw data through OTU tables for all 16S data included in this paper
+- mean sequencing depth: 26,196 reads/sample
+	- 01.qiime_import.sh: script to import raw PE sequences into qiime2
+		- raw sequencing data available at BioProject accession PRJNA992061
+	- 02.dada_paired.sbatch: script to run dada2 separately on each separate sequencing run
+		- Because error rates may differ across sequencing runs, it is appropriate to run DADA2 separately on each run and merge afterwards
+	- 03.merge_runs.sh: script to merge dada2 outputs from all seq runs. outputs merged rep seqs, otu table, and phylogenetic tree.
+	- 04.build_classifier.sbatch: script to build a taxonomic classifier using the Silva99 taxonomy database and our 16S primer sequences
+	- 05.SKlearn.sbatch: script to map 16S ASVs to taxonomic assignments.
+
+
+02.data_files
+- qiime2 and R data outputs
+	- a1_dm.csv
+		- diversity metrics for WD-Resilience experiment 16S data
+	- a2_d14_BCdist_fromRCPBS.csv
+		- mean BC distance from each Intervention experiment treatment group to RC-PBS-PBS no-ABX controls
+	- a2_d14_BCdist_fromWDPBS.csv
+		- mean BC distance from each Intervention experiment treatment group to WD-PBS-PBS no-ABX controls
+	- a2_dm.csv
+		- diversity metrics for Intervention experiment 16S data
+	- wd_merged_otu.csv
+		- otu table for all 16S sequencing data
+	- wd_merged_seqs.fasta 
+		- rep seqs for all 16S sequencing data
+	- wd_merged_tree.nwk
+		- midpoint rooted phylogenetic tree for all 16S sequencing data
+	- wd_meta_merged.csv
+		- metadata for all 16S sequencing data
+		- Columns:
+			- sampleID = experimental sample ID
+			- seqID = ID assigned at sequencing
+			- Mouse = Mouse ID
+			- Treatment = Treatment group
+			- Diet = pre-antibiotic diet
+			- Cage = mouse cage
+			- Desc = description of timepoint
+			- Day = raw experimental day
+			- Rec_day = recovery day (i.e. days post-ABX)
+			- Rec_day_adj = recovery day adjusted to combine D14/D15, D21/22, D27-32, D35/36, D49/50, and D63/64. These timepoints were designed to be combined, as mice could logistically not all be sacrificed at the same time. Combined timepoints were statistically indistinguishable from one another by PCoA and PERMANOVA analysis.
+			- Sac.group = which timepoint mice were sacrificed at (subsets of mice were sacrificed at D-3, D0, D14, and D28)
+			- Aim = experiment (A1 = WD-resilience, A2 = intervention, A3 = colonization resistance)
+			- Cohort = cohort within experimental Aim
+			- reads.in = number of raw reads
+			- reads.out = number of reads after filtering
+			- nseqs =  merged sequences remaining after filtering
+			- seq_run = sequencing run
+			- Abx = antibiotic treatment vs PBS control
+			- Post.diet = post-antibiotic diet in Intervention experiments
+			- Post.micr = post-antibiotic microbes in Intervention experiments
+			- Pre.diet = pre-antibiotic diet in Intervention experiments
+	- wd_meta_merged_A2.csv
+		- subset of wd_meta_merged.csv
+		- metadata for A2 (intervention) 16S sequencing data
+	- wd_taxonomy.csv
+		- taxonomic alignment for all 16S sequencing data
+		- one lactobacillaceae (ASV 94e30534f622e456a683abe4e60fc214) was manually BLASTed and added to this taxonomy
+
+03.Diet_resilience
+- Analyses that generated Figure 1, Figure S1, Table S1, S2
+- Data from A1 Cohorts 1-3
+	- Cohorts 4-6 are present in metadata sheet/qiime2 outputs but represent a different experiment that was not included in this paper
+- Files:
+	- 01.A1_Diversity_phyloseq.R
+		- imports qiime2 outputs into phyloseq to calculate diversity metrics (Faith's PD, Shannon, ASV richness)
+		- Outputs diversity metrics in a1_dm.csv file, available in 02.data_files/ directory
+		- generates Figures S1D-F
+	- 02.A1_Diversity_prism.pzfx
+		- uses a1_dm.csv to generate Figure 1C
+		- performs statistical analysis presented in Table S2A-C 
+	- 03.A1_Rel_abun_barplots.R
+		- generates Figure 1D, Figure S1G
+	- 04.A1_PCoA.R
+		- generates Figure 1E, Figure S1H
+		- performs statistical analyses presented in Table S2D
+		- calculates mean BC distance from ABX groups to respective PBS controls for plotting/analysis in 05.A1_BC_dist.prism
+	- 05.A1_BC_dist.prism
+		- generates Figure S1I
+		- performs statistical analyses presented in Table S2E
+
+04.Intervention
+- Analyses that generated Figure 4, Figure S7, Table S9
+- Data from A2 Cohorts 1-4
+- Files:
+	- 01.A2_mean_barplots.R
+		- generates Figure 4B, Figure S7D
+	- 02.A2_Diversity.R
+		- generates Figure 4C, Figure S7C
+	- 03.A2_Diversity.prism
+		- performs statistical analyses presented in Table S9C
+	- 04.A2_PCoA.R
+		- generates Figure S7A, S7B
+		- generates data used in 05.A2_BC_dist.prism
+		- performs statistical analyses presented in Table S9A
+	- 05.A2_BC_dist.prism
+		- performs statistical analyses presented in Table S9B
+
+
+

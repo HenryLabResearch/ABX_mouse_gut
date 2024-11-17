@@ -1,0 +1,108 @@
+README
+
+Mean metagenome coverage: 3.437 (calculated via Lander/Waterman equation)
+
+01.seq_analysis_pipeline
+- 01.trimmomatic.sbatch
+	- trim raw reads using trimmomatic
+- 02.qc_minoche.sbatch
+	- minoche quality filter
+- 03.coassembly.sbatch.sh
+	- use megahit to coassemble reads into contigs
+- 04.annotate.sbatch
+	- import contigs into anvio contigs.db file
+	- annotate with hmms, pfams, kegg-kofams, and CAZyme db
+- 05.build_map_db.sbatch
+	- build a bowtie mapping db
+- 06.mapping.sbatch
+	- map metagenomic short reads to the contigs using bowtie2
+- 07.samtools.sbatch
+	- convert .sam files to .bam files
+- 08.profile.sbatch
+	- make an anvi-profile for each sample
+- 09.merge_profiles.sbatch
+	- merge the profiles for each sample into one profile.db
+- 10.export.sbatch
+	- export splits and coverages for further analysis in R
+
+02.data_files
+- agal_genes.csv
+	- manual subset of all ECs listed in dbCAN substrate database (https://bcb.unl.edu/dbCAN_sub/data/fam-substrate-mapping-08252022.tsv) that metabolize alpha-galactosides or raffinose
+- counts_ko_sum.csv
+	- coverage of each KO by sample
+- DEG_vs_preABX/
+	- contains results of DESeq2 analysis comparing later timepoints to pre-ABX D-3 within diets
+	- files generated in 03.R_prism_analyses/05.deseq2.R
+- DEGs_byDay/
+	- contains results of DESeq2 analysis comparing adjacent timepoints within diets
+	- files generated in 03.R_prism_analyses/05.deseq2.R
+- func_redund_mean.csv
+	- mean functional redundancy (genes per KO) across mice within treatments/timepoints
+	- file generated in 03.R_prism_analyses/03.functional_redundancy.R
+- func_redund_raw.csv
+	-  functional redundancy (genes per KO) for each mouse across timepoints
+	- file generated in 03.R_prism_analyses/03.functional_redundancy.R
+- ko.all.csv
+	- full KEGG hierarchy
+- ko.mod4.csv
+	- KEGG hierarchy but modified to remove non-bacterial systems and functions
+- meanRelAbun_enr.csv
+	- relative abundances of KOs that were significantly enriched relative to pre-ABX D-3 within diet groups, averaged across mice
+	- file generated in 03.R_prism_analyses/09.DEG_enr.R
+- meta.csv
+	- metadata for shotgun sequencing samples
+- psacchs.csv
+	- manual subset of all ECs listed in dbCAN substrate database that metabolize starch, xylan, arabinose, or cellulose
+- richness_all_levels_percent.csv
+	- functional richness at the gene call, KO, and KEGG Category levels averaged across mice within a given timepoint/treatment group
+- SCFA_genes.csv
+	- list of genes involved in SCFA metabolism; derived from Supplementary Table 1 in https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-021-07944-0#MOESM1 
+- wd_all_cov.csv
+	- anvi-export-gene-coverage-and-detection output of coverage per gene call
+- wd_kofams.txt
+	- anvi-export-functions output mapping gene calls to KOs
+
+03.R_prism_analyses
+- 01.initial_processing.R
+	- maps coverage of gene calls to KOs and generates counts_ko_sum.csv
+- 02.func_diversity.R
+	- calculates functional richness at gene call, KO, and KEGG category levels
+	- outputs richness_all_levels_percent.csv
+- 03.functional_redundancy.R
+	- calculates functional redundancy (genes per KO)
+	- outputs func_redund_mean.csv, func_redund_raw.csv
+	- generates Figure 2B, Figure S2B, Table S3D, S3E
+- 04.func_richness_redund.pzfx
+	- plots functional richness at gene call, KO, and KEGG Category level over time
+	- plots functional redundancy (genes per KO) over time
+	- generates Figure 2A, Figure S2A, Table S3A, S3B, S3C
+- 05.deseq2.R
+	- runs DESeq2 to perform differential abundance analyses of KOs across timepoints/treatment groups
+	- produces files in 02.data_files/DEGs_vs_preABX/ and 02.data_files/DEGs_byDay/
+	- produces results featured in Table S4A
+- 06.nDEGs.pzfx
+	- plots number of KOs significantly enriched or depleted at later timepoints relative to pre-ABX D-3
+	- generates Figure S2C, S2F
+- 07.DEG_venn.R
+	- evaluates overlaps between DEGs identified in 05.deseq2.R that were used to manually produce Figures S2D, S2E, S2G, S2H
+	- outputs were also used to generate Figures S2I - S2N in 08.DEG_depleted.R and 09.DEG_enr.R
+- 08.DEG_depleted.R
+	- plots the number of KOs significantly depleted at later timepoints relative to pre-ABX D-3
+	- generates Figures S2I, S2L
+- 09.DEG_enr.R
+	- plots the relative abundance of KOs significantly enriched at later timepoints relative to pre-ABX D-3
+	- generates Figures S2J, S2K, S2M, S2N
+- 10.kegg_gsea.R
+	- evaluates enrichment/depletion of broader KEGG categories of KOs rather than individual differential abundance using gene set enrichment analysis
+	- produces results featured in Table S4B
+- 11.genePulls.R
+	- collects relative abundances of KOs that map to specific subsets of genes
+	- outputs used in 12.genePulls.pzfx
+- 12.genePulls.pzfx
+	- plots relative abundances of KOs for curated subsets of genes compared to the substrates that those genes metabolize
+	- analyzes whether these genes change significantly in relative abundance relative to pre-ABX D-3 over time across treatment groups (Table S6)
+	- Generates Figures S3D-F
+
+
+
+

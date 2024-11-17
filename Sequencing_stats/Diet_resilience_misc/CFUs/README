@@ -1,0 +1,19 @@
+DIET RESILIENCE CFU ANALYSIS
+
+Cohorts included: 
+- WD-Resilience Cohort 1-3 (female) --> Figure 1B, Figure S1B
+- Colonization Resistance Cohorts 1-3 (female) and Cohort 4 (male) --> Figure S1B, S1C
+
+WD-Resilience experiments and colonization resistance experiments were carried out identically until D14 of recovery after antibiotics, and were therefore combined in the supplementary analysis comparing male vs female cohorts.
+
+
+FILES:
+1. a1_a3_allCFUs.csv
+- raw CFU data for both experiments and all cohorts
+
+2. diet_resilience_CFUs.prism
+- statistical analysis associated with Figure 1B and Figures S1B, S1C, Table S1
+- generates Figure 1B
+
+3. male_female.R
+- generates Figures S1B, S1C

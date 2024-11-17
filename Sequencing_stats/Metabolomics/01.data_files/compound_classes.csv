@@ -1,0 +1,73 @@
+Compound,Class,Core,Run1
+12_Ketolithocholic acid,Bile Acid,n,y
+2_deoxy_Ribose,Carbohydrate,y,y
+3-Ketolithocholic acid,Bile Acid,n,n
+4-Methylvaleric acid,Organic Acid,n,n
+5_Oxoproline,Amino Acid,n,y
+Alanine,Amino Acid,y,y
+Allose,Carbohydrate,y,y
+Arabinose,Carbohydrate,y,y
+Asparagine,Amino Acid,y,y
+Aspartic acid,Amino Acid,y,y
+Cellobiose,Carbohydrate,n,y
+Cholic/Allocholic acid,Bile Acid,n,y
+Cholesterol,Organic Acid,n,n
+Citric acid,TCA Cycle Intermediate,y,y
+cis-Aconitic acid,TCA Cycle Intermediate,n,n
+Coprostanol,Organic Acid,n,n
+Cysteine,Amino Acid,y,y
+Decanoic acid,Fatty Acid,y,y
+Deoxycholic acid,Bile Acid,y,y
+Dihydrocholesterol,Organic Acid,n,n
+Dodecanoic acid,Fatty Acid,y,y
+Dulcitol,Carbohydrate,y,y
+Fructose,Carbohydrate,y,y
+Fucose,Carbohydrate,y,y
+Fumaric acid,TCA Cycle Intermediate,y,y
+Galactose,Carbohydrate,y,y
+Glucose,Carbohydrate,y,y
+Glutamic acid,Amino Acid,y,y
+Glutaric acid,Organic Acid,n,n
+Glycine,Amino Acid,y,y
+Hexanoic acid,Fatty Acid,y,y
+Histidine,Amino Acid,y,y
+Indole,Indole,y,y
+Indole-3-acetic acid,Organic Acid,n,n
+Isoleucine,Amino Acid,y,y
+Lactic acid,Organic Acid,n,n
+Leucine,Amino Acid,y,y
+Linoleic acid,Fatty Acid,y,y
+Lithocholic/Allolithocholic/Isolithocholic acid,Bile Acid,y,y
+Lysine,Amino Acid,n,y
+Malic acid,Organic Acid,y,y
+Melibiose,Carbohydrate,y,y
+Methionine,Amino Acid,y,y
+Myristic acid,Fatty Acid,y,y
+N_Acetyl_Glucosamine,Carbohydrate,n,y
+Niacin,Organic Acid,y,y
+Octanoic acid,Fatty Acid,y,y
+Ornithine,Amino Acid,n,y
+Palmitic acid,Fatty Acid,n,y
+Phenylalanine,Amino Acid,y,y
+Picolinic acid,Organic Acid,n,y
+Proline,Amino Acid,y,y
+Pyruvic acid,TCA Cycle Intermediate,y,y
+Raffinose,Carbohydrate,y,y
+Rhamnose,Carbohydrate,y,y
+Ribose,Carbohydrate,y,y
+Serine,Amino Acid,y,y
+Shikimic acid,Organic Acid,n,n
+Sorbitol,Carbohydrate,n,n
+Succinic acid,Organic Acid,y,y
+Sucrose,Carbohydrate,y,y
+Threonine,Amino Acid,y,y
+Tryptophol,Organic Acid,n,n
+Tyrosine,Amino Acid,y,y
+Ursodeoxycholic acid,Bile Acid,n,y
+Valeric acid,Fatty Acid,y,y
+Valine,Amino Acid,y,y
+alpha_Ketoglutaric acid,TCA Cycle Intermediate,n,y
+cis_Oleic acid,Fatty Acid,y,y
+meso_Erythritol,Carbohydrate,y,y
+myo_Inositol,Carbohydrate,y,y
+trans_4_Hydroxyproline,Amino Acid,n,y

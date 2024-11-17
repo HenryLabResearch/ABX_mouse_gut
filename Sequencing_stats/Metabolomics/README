@@ -1,0 +1,28 @@
+README
+
+01.data_files
+- compound_classes.csv
+	- maps the compounds on the TMS panel to broader classifications
+- metabolomics_meta.csv
+	- metadata for all metabolomics samples
+- scfa_compound_classes.csv
+	- maps the compounds on the SCFA panel to broader classifications
+- SCFA.csv
+	- absolute concentrations (mM) of SCFAs and other metabolites included on the same analysis panel
+- TMS.csv
+	- relative abundances (normalized to internal standard run with each compound) of TMS panel metabolites. Values are comparable within but not across compounds.
+
+02.analysis
+- 01.tms_heatmaps.R
+	- produces heatmaps of metabolites from TMS panel normalized as log2fold change relative to pre-ABX D-3
+	- generates Figure 2C, Figure S2A
+- 02.scfa_boxplots.R
+	- produces boxplots of absolute abundances of SCFAs across diets and timepoints
+	- generates Figure 2D-F
+- 03.scfa_stats.pzfx
+	- performs statistical analyses comparing SCFA abundances across timepoints within diets
+	- generates data presented in Table S5C
+- 04.tms_pcoa.R
+	- creates PCoA plots using TMS panel data to evaluate overall similarity of metabolomic profiles of samples across diets and timepoints
+	- generates Figures S3B, S3C
+	- generates data presented in Table S5B
